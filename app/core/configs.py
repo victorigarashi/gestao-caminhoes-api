@@ -1,17 +1,18 @@
-from typing import List
-from pydantic import AnyHttpUrl, BaseSettings
+from typing import List, ClassVar
+from pydantic import AnyHttpUrl
+from pydantic_settings import BaseSettings
 from sqlalchemy.orm import declarative_base
 
 class Settings(BaseSettings):
-    API_V1_STR: str = '/api/v1'
-    DB_URL: str = "postgresql+asyncpg://projeto:fast@localhost:5432/facul"
-    DBBaseModel = declarative_base()
-    
-    
-    class config:
+
+    API_V1_STR: str = "/api/v1"
+
+    DB_URL: str = "postgresql+asyncpg://projeto:12345@localhost:5432/gestao_caminhao"
+
+    DBBaseModel: ClassVar = declarative_base()
+
+    class Config:
         case_sensitive = True
-    
-    
-    
-    
+
+
 settings = Settings()
